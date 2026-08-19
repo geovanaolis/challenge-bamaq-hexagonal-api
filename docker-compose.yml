@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # 1. Banco de Dados Relacional
+  # Banco de Dados Relacional
   mysql:
     image: mysql:8.0
     container_name: bamaq-mysql
@@ -13,14 +13,14 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
-  # 2. Cache em Memória
+  # Cache em Memória
   redis:
     image: redis:alpine
     container_name: bamaq-redis
     ports:
       - "6379:6379"
 
-  # 3. Zookeeper (Dependência do Kafka)
+  # Zookeeper (Dependência do Kafka)
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
     container_name: bamaq-zookeeper
@@ -28,7 +28,7 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
 
-  # 4. Message Broker
+  # Message Broker
   kafka:
     image: confluentinc/cp-kafka:7.4.0
     container_name: bamaq-kafka
